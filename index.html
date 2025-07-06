@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiztopia</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #4b0082;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    img.logo {
+      width: 300px;
+      margin-top: 20px;
+    }
+    .question {
+      font-size: 1.8rem;
+      margin: 30px 0;
+    }
+    .answers {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    .answers a {
+      padding: 20px 30px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+    .red { background-color: #e74c3c; }
+    .yellow { background-color: #f1c40f; color: #000; }
+    .green { background-color: #2ecc71; }
+    .blue { background-color: #3498db; }
+
+    #countdown {
+      font-size: 1.5rem;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+  <img src="Q (1).png" alt="Quiztopia Logo" class="logo" />
+
+  <div class="question" id="question">
+    Which memecoin had the fastest pump in May 2024?
+  </div>
+
+  <div id="countdown">Time left: <span id="time">30</span> seconds</div>
+
+  <div class="answers">
+    <a href="https://pump.fun/RED_TOKEN_URL" class="red">Red</a>
+    <a href="https://pump.fun/YELLOW_TOKEN_URL" class="yellow">Yellow</a>
+    <a href="https://pump.fun/GREEN_TOKEN_URL" class="green">Green</a>
+    <a href="https://pump.fun/BLUE_TOKEN_URL" class="blue">Blue</a>
+  </div>
+
+  <script>
+    let timeLeft = 30;
+    const timerElement = document.getElementById("time");
+
+    const countdown = setInterval(() => {
+      timeLeft--;
+      timerElement.textContent = timeLeft;
+      if (timeLeft <= 0) {
+        clearInterval(countdown);
+        document.getElementById("countdown").textContent = "Time's up!";
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
