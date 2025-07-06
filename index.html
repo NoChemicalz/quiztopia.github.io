@@ -2,68 +2,111 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Quiztopia</title>
   <style>
     body {
       margin: 0;
-      font-family: 'Arial', sans-serif;
-      background-color: #4b0082;
-      color: white;
+      padding: 0;
+      background-color: #f9f9f9;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #333;
       text-align: center;
+    }
+
+    header {
+      background-color: #46178F;
       padding: 20px;
     }
-    img.logo {
-      width: 300px;
+
+    .logo {
+      width: 200px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    .question {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 30px;
+      color: #46178F;
+    }
+
+    #countdown {
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      color: #555;
+    }
+
+    .answers {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
       margin-top: 20px;
     }
-    .question {
-      font-size: 1.8rem;
-      margin: 30px 0;
-    }
-    .answers {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
+
     .answers a {
-      padding: 20px 30px;
-      border-radius: 8px;
-      text-decoration: none;
-      color: white;
-      font-weight: bold;
+      display: block;
+      padding: 20px;
+      border-radius: 12px;
       font-size: 1.2rem;
+      font-weight: bold;
+      color: white;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
+
+    .answers a:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    }
+
     .red { background-color: #e74c3c; }
     .yellow { background-color: #f1c40f; color: #000; }
     .green { background-color: #2ecc71; }
     .blue { background-color: #3498db; }
 
-    #countdown {
-      font-size: 1.5rem;
-      margin: 20px 0;
+    footer {
+      margin-top: 60px;
+      font-size: 0.9rem;
+      color: #888;
     }
   </style>
 </head>
 <body>
-  <img src="Q (1).png" alt="Quiztopia Logo" class="logo" />
 
-  <div class="question" id="question">
-    Which memecoin had the fastest pump in May 2024?
+  <header>
+    <img src="Q (1).png" alt="Quiztopia Logo" class="logo">
+  </header>
+
+  <div class="container">
+    <div class="question">
+      Which memecoin had the fastest pump in May 2024?
+    </div>
+
+    <div id="countdown">
+      Time left: <span id="time">300</span> seconds
+    </div>
+
+    <div class="answers">
+      <a href="https://pump.fun/RED_TOKEN_URL" class="red">Red</a>
+      <a href="https://pump.fun/YELLOW_TOKEN_URL" class="yellow">Yellow</a>
+      <a href="https://pump.fun/GREEN_TOKEN_URL" class="green">Green</a>
+      <a href="https://pump.fun/BLUE_TOKEN_URL" class="blue">Blue</a>
+    </div>
   </div>
 
-  <div id="countdown">Time left: <span id="time">30</span> seconds</div>
-
-  <div class="answers">
-    <a href="https://pump.fun/RED_TOKEN_URL" class="red">Red</a>
-    <a href="https://pump.fun/YELLOW_TOKEN_URL" class="yellow">Yellow</a>
-    <a href="https://pump.fun/GREEN_TOKEN_URL" class="green">Green</a>
-    <a href="https://pump.fun/BLUE_TOKEN_URL" class="blue">Blue</a>
-  </div>
+  <footer>
+    &copy; 2025 Quiztopia. All rights reserved.
+  </footer>
 
   <script>
-    let timeLeft = 30;
+    let timeLeft = 300; // 5 minutes
     const timerElement = document.getElementById("time");
 
     const countdown = setInterval(() => {
@@ -72,8 +115,10 @@
       if (timeLeft <= 0) {
         clearInterval(countdown);
         document.getElementById("countdown").textContent = "Time's up!";
+        // Optional: redirect or show next question
       }
     }, 1000);
   </script>
+
 </body>
 </html>
